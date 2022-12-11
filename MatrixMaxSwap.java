@@ -1,6 +1,6 @@
 package MorcMSemestralProject;
 
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * 19. Program swaps the column and row with an absolute maximal value in matrix on indexes 0 and vice versa
@@ -14,18 +14,19 @@ public final class MatrixMaxSwap {
     static Scanner sc = new Scanner(System.in);
     static int[] coords = new int[2];
     static double[][] matrix;
-    static int rows, columns;
+    static int rows, columns, maxValRow, maxValCol;
 
     public static void getDimensions(){
         System.out.println("Pocet radku");
         rows = sc.nextInt();
         if(rows < 0) return;
         System.out.println("Pocet sloupcu");
-        columns = sc.nextInt();
+        columns = sc.nextInt(); 
     }
 
     public static double[][] getMatrix(int rows, int columns){
         matrix = new double[rows][columns];
+        sc.useLocale(Locale.GERMAN);
 
         System.out.println("Zadej matici");
         for (int i = 0; i < rows; i++) {
@@ -36,27 +37,21 @@ public final class MatrixMaxSwap {
         return matrix;
     }
 
-    public static int[] maxValue(double[][] a){
+    public static void maxValue(double[][] a){
         double maxValue = a[0][0]; 
-        int[] matrixCoords = new int[2];
 
         for (int i = 0; i < a.length; i++) { //iteruji pres radky
             for (int j = 0; j < a[i].length; j++) { //iteruji pres sloupce 
                 if(Math.abs(a[i][j]) > Math.abs(maxValue)){
                     maxValue = a[i][j];     
-                    matrixCoords[0] = i;
-                    matrixCoords[1] = j;
+                    maxValRow = i;
+                    maxValCol = j;
                 }
             }
         }
-        return matrixCoords;
     }
 
-    public static void swapColumns(double[][]a){
-        coords = maxValue(a);
-        int maxValRow = coords[0];
-        int maxValCol = coords[1];
-
+    public static void swapColumnsRows(double[][]a){   
         double temp;
         for (int i = 0; i < a.length; i++) { //iteruji pres radky
             temp = a[i][0]; // uschovam si promennou na puvodnim sloupci
@@ -72,6 +67,7 @@ public final class MatrixMaxSwap {
     }
 
     public static void showMatrix(double[][] a){
+        Locale.setDefault(Locale.GERMAN);
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a[i].length; j++) {
                 System.out.print(String.format("%.2f", a[i][j])+ " "); //vypisuji vyslednou matici, zaokrouhleno na dve des. mista
@@ -84,7 +80,8 @@ public final class MatrixMaxSwap {
         getDimensions();
         if(rows < 0 || columns < 0) return;
         getMatrix(rows,columns);
-        swapColumns(matrix);
+        maxValue(matrix);
+        swapColumnsRows(matrix);
         showMatrix(matrix);
     }
 
