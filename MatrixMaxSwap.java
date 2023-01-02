@@ -37,13 +37,13 @@ public final class MatrixMaxSwap {
         return matrix;
     }
 
-    public static void maxValue(double[][] a){
-        double maxValue = a[0][0]; 
+    public static void maxAbsValue(double[][] a){
+        double maxAbsValue = a[0][0]; 
 
         for (int i = 0; i < a.length; i++) { //iteruji pres radky
             for (int j = 0; j < a[i].length; j++) { //iteruji pres sloupce 
-                if(Math.abs(a[i][j]) > Math.abs(maxValue)){
-                    maxValue = a[i][j];     
+                if(Math.abs(a[i][j]) > Math.abs(maxAbsValue)){
+                    maxAbsValue = a[i][j];     
                     maxValRow = i;
                     maxValCol = j;
                 }
@@ -53,6 +53,7 @@ public final class MatrixMaxSwap {
 
     public static void swapColumnsRows(double[][]a){   
         double temp;
+
         for (int i = 0; i < a.length; i++) { //iteruji pres radky
             temp = a[i][0]; // uschovam si promennou na puvodnim sloupci
             a[i][0] = a[i][maxValCol];
@@ -76,22 +77,23 @@ public final class MatrixMaxSwap {
         }
     }
 
-    public static void execute(){
+    public static void main(String[] args){
         getDimensions();
         if(rows < 0 || columns < 0) return;
         getMatrix(rows,columns);
-        maxValue(matrix);
+        maxAbsValue(matrix);
         swapColumnsRows(matrix);
         showMatrix(matrix);
     }
 
-    //test main
+    /*test main
     public static void main(String[] args) {
-        /*double[][] testMatrix = {{26,12.6,123.8,4.1},
+        double[][] testMatrix = {{26,12.6,123.8,4.1},
                               {0,-136.4,12,5},
                               {15,19,11,-3}};
 
         swapColumns(testMatrix);
-        showMatrix(testMatrix);*/
+        showMatrix(testMatrix);
     }
+    */
 }
