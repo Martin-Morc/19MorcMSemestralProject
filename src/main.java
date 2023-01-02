@@ -22,10 +22,10 @@ public class main {
             
             switch(menu){
                 case 1:
-                    MatrixMaxSwap.main(args); // executes all methods accordingly
+                    MatrixMaxSwap.run(); // executes all methods accordingly
                     break;
                 case 2:
-                    ChristmasMorcMartin.main(args);
+                    ChristmasMorcMartin.run();
                     break;
                 case 3:
                     break;

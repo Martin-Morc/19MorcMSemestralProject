@@ -22,7 +22,7 @@ public class ChristmasMorcMartin {
     static final int SHELFPART_COL_LENGTH = (shelfPart[0].length) ;
     static final int SHELFPART_ROW_LENGTH = shelfPart.length;
 
-    public static void main(String[] args) {
+    public static void run() {
         makeShelves();
         int choice1;
         do{
