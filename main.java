@@ -21,9 +21,8 @@ public class main {
             menu = sc.nextInt();
             
             switch(menu){
-
                 case 1:
-                    MatrixMaxSwap.execute(); // executes all methods accordingly
+                    MatrixMaxSwap.main(args); // executes all methods accordingly
                     break;
                 case 2:
                     ChristmasMorcMartin.main(args);
